@@ -48,7 +48,7 @@ const remarkReactDocgenTypescript = require('remark-react-docgen-typescript');
 
 const doc = `# foo-components
 
-## Apis
+## API
 
 <react-docgen-typescript src="./Column.tsx" />
 `;
@@ -60,7 +60,7 @@ Into
 ``` markdown
 # foo-components
 
-## Apis
+## API
 
 ### Column
 

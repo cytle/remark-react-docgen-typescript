@@ -13,7 +13,7 @@ export interface IColumnProps {
    * prop3 description
    */
   prop3: () => void;
-  /** prop4 description */
+  /** prop4 description 中文 */
   prop4: "option1" | "option2" | "option3";
 }
 

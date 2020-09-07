@@ -2,6 +2,7 @@
   "name": "remark-react-docgen-typescript",
   "version": "0.0.0",
   "description": "Import React component documentation by react-docgen-typescript",
+  "main": "build/index.js",
   "engines": {
     "node": ">= 12.13"
   },
@@ -22,6 +23,7 @@
     "react": "^16.13.1",
     "remark": "^12.0.1",
     "rimraf": "~3.0.2",
+    "string-width": "^4.2.0",
     "ts-jest": "~26.2.0",
     "tsutils": "~3.17.0",
     "typescript": "~4.0.2"
@@ -32,7 +34,8 @@
     "build:watch": "tsc -w -p tsconfig.release.json",
     "lint": "eslint . --ext .ts,.tsx",
     "test": "jest --coverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "prepublishOnly": "npm run clean && npm run build"
   },
   "author": "Wuma <canyoutle@gmail.com>",
   "license": "Apache-2.0",
@@ -40,6 +43,7 @@
     "hast-util-from-parse5": "^6.0.0",
     "hast-util-has-property": "^1.0.4",
     "hast-util-is-element": "^1.1.0",
+    "markdown-table": "^2.0.0",
     "parse5": "^6.0.1",
     "react-docgen-typescript": "^1.20.4",
     "to-vfile": "^6.0.1",

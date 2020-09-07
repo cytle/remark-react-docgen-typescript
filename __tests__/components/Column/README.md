@@ -1,5 +1,5 @@
 # foo-components
 
-## Apis
+## API
 
 <react-docgen-typescript src="./Column.tsx" />
