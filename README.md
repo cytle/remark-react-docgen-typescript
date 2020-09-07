@@ -8,7 +8,7 @@ Import React component documentation by react-docgen-typescript [`react-docgen-t
 yarn add -D remark-react-docgen-typescript
 ```
 
-The Component `Column.tsx`
+The Component [`Column.tsx`](./__tests__/components/Column/Column.tsx)
 
 ``` tsx
 import * as React from "react";
@@ -33,7 +33,7 @@ export interface IColumnProps {
 /**
  * Form column.
  */
-export class Column extends Component<IColumnProps, {}> {
+export class Column extends Component<IColumnProps> {
   render() {
     return <div>Test</div>;
   }
@@ -52,7 +52,7 @@ const doc = `# foo-components
 
 <react-docgen-typescript src="./Column.tsx" />
 `;
-console.log(remark().use(remarkReactDocgenTypescript).process(doc).contents);
+console.log(remark().use(remarkReactDocgenTypescript).processSync(doc).contents);
 ```
 
 Into
@@ -68,10 +68,10 @@ Form column.
 
 #### props
 
-| prop | type | default | required | description |
-|---- | :----: | :-------: | :--------: | -----------|
-| **prop1** | `string` | `null` | :x: | prop1 description |
-| **prop2** | `number` | `null` | :x: | prop2 description |
-| **prop3** | `() => void` | `null` | :x: | prop3 description |
-| **prop4** | `"option1" | "option2" | "option3"` | `null` | :x: | prop4 description |
+| prop | description | type | default | required |
+| ---- | ----------- | ---- | ------- | -------- |
+| **prop1** | prop1 description | `string` | `null` | :negative_squared_cross_mark: |
+| **prop2** | prop2 description | `number` | `null` | :white_check_mark: |
+| **prop3** | prop3 description | `() => void` | `null` | :white_check_mark: |
+| **prop4** | prop4 description | `"option1" | "option2" | "option3"` | `null` | :white_check_mark: |
 ```
