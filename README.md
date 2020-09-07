@@ -1,8 +1,14 @@
+[![TypeScript version][ts-badge]][typescript-4-0]
+[![Node.js version][nodejs-badge]][nodejs]
+[![APLv2][license-badge]][license]
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fcytle%2Fremark-react-docgen-typescript%2Fbadge&style=flat)](https://actions-badge.atrox.dev/cytle/remark-react-docgen-typescript/goto)
+
+
 # remark-react-docgen-typescript
 
 [remark](https://github.com/remarkjs/remark) plugin to transform React component to Markdown by  [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript)
 
-## Usage
+## Getting Started
 
 ``` sh
 yarn add -D remark-react-docgen-typescript
@@ -114,3 +120,14 @@ const render: ReactDocgenTypescriptRender = (docs) => docs
 const doc = vfile.readSync('README.md');
 console.log(remark().use(remarkReactDocgenTypescript, { render }).processSync(doc).contents);
 ```
+
+## License
+
+Licensed under the APLv2. See the [LICENSE](https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE) file for details.
+
+[ts-badge]: https://img.shields.io/badge/TypeScript-4.0-blue.svg
+[typescript-4-0]: https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-0.html
+[nodejs-badge]: https://img.shields.io/badge/Node.js->=%2012.13-blue.svg
+[nodejs]: https://nodejs.org/dist/latest-v12.x/docs/api/
+[license-badge]: https://img.shields.io/badge/license-APLv2-blue.svg
+[license]: https://github.com/jsynowiec/node-typescript-boilerplate/blob/master/LICENSE
