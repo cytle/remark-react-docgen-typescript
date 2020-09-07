@@ -5,7 +5,10 @@ import { Component } from "react";
  * Column properties.
  */
 export interface IColumnProps {
-  /** prop1 description */
+  /**
+   * prop1 description
+   * @default "red"
+   */
   prop1?: string;
   /** prop2 description */
   prop2: number;

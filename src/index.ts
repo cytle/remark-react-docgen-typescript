@@ -64,7 +64,7 @@ ${markdownTable([
       `**${vo.name}**`,
       vo.description,
       `\`${vo.type.name}\``,
-      `\`${vo.defaultValue && vo.defaultValue.value}\``,
+      `${vo.defaultValue && vo.defaultValue.value}`,
       vo.required ? ':white_check_mark:' : ':negative_squared_cross_mark:',
     ]
   )
