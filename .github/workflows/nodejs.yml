@@ -10,9 +10,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: volta-cli/action@v1
-    - run: npm ci --no-audit
-    - run: npm run lint --if-present
-    - run: npm test
-    - run: npm run build --if-present
+      with:
+        node-version: 12.x
+        yarn-version: 1.22.x
+    - run: yarn install --frozen-lockfile
+    - run: yarn run lint
+    - run: yarn test
+    - run: yarn run build
       env:
         CI: true
