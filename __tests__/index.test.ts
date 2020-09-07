@@ -6,6 +6,7 @@ import * as remark from 'remark';
 import { ComponentDoc } from 'react-docgen-typescript';
 import * as markdownTable from 'markdown-table';
 import stringWith from 'string-width';
+import * as docgen from 'react-docgen-typescript';
 
 describe('remark use reactDocgenTypescript', () => {
   it('parse Column/README.md', () => {
@@ -49,6 +50,25 @@ describe('remark use reactDocgenTypescript', () => {
       .toBe(
         readFileSync(
           path.join(componentPath, 'custom.md'),
+          'utf-8',
+        ),
+      );
+  });
+  it('fileParser', () => {
+    const componentPath = path.resolve(__dirname, 'components', 'Column');
+    const fileParser = docgen.withDefaultConfig({
+      propFilter: {
+        skipPropsWithName: ['prop4'],
+      }
+    });
+    const { contents } = remark()
+      .use(reactDocgenTypescript, { fileParser })
+      .processSync(vfile.readSync(path.join(componentPath, 'README.md')));
+
+    expect(contents)
+      .toBe(
+        readFileSync(
+          path.join(componentPath, 'skipPropsProp4.md'),
           'utf-8',
         ),
       );
