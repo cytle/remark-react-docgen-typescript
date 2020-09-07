@@ -23,25 +23,24 @@ export type ReactDocgenTypescriptOptions = ParserOptions & {
 export const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
   (options) => {
     const { render, fileParser, ...parseOptions} = {
-      savePropValueAsString: true,
       render: defaultRender,
+      savePropValueAsString: true,
       ...options,
     };
     const parser = fileParser || withDefaultConfig(parseOptions);
     return (tree, file) => {
       visit(tree, 'html', (node) => {
+        /* istanbul ignore next */
         if (typeof node.value === 'string') {
           const hast = createElementNodeFromHtml(node.value);
 
           if (isElement(hast, 'react-docgen-typescript') && hasProperty(hast, 'src')) {
             const { src } = hast.properties as {src: string};
-            if (src) {
-              const fileAbsPath = path.resolve(file.dirname, src);
+            const fileAbsPath = path.resolve(file.dirname, src);
 
-              const docs = parser.parse(fileAbsPath);
+            const docs = parser.parse(fileAbsPath);
 
-              node.value = render(docs);
-            }
+            node.value = render(docs);
           }
         }
       });
