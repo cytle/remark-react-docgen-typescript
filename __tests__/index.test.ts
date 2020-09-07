@@ -42,7 +42,7 @@ describe('remark use reactDocgenTypescript', () => {
     const renderComponentApi = (doc: ComponentDoc) => `\`${doc.displayName}\`: ${doc.description}\n\n${tableRender(doc)}`;
     const render: ReactDocgenTypescriptRender = (docs) => docs.map(doc => renderComponentApi(doc)).join('\n');
     const { contents } = remark()
-      .use(reactDocgenTypescript, render)
+      .use(reactDocgenTypescript, { render })
       .processSync(vfile.readSync(path.join(componentPath, 'README.md')));
 
     expect(contents)
