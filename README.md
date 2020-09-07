@@ -1,8 +1,8 @@
 # remark-react-docgen-typescript
 
-Import React component documentation by react-docgen-typescript [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript)
+[remark](https://github.com/remarkjs/remark) plugin to transform React component to Markdown by  [`react-docgen-typescript`](https://github.com/styleguidist/react-docgen-typescript)
 
-### Usage
+## Usage
 
 ``` sh
 yarn add -D remark-react-docgen-typescript
@@ -82,7 +82,11 @@ Form column.
 
 ## Options
 
-### customRender
+### `remark().use(reactDocgenTypescript[, options])`
+
+#### render
+
+Custom document rendering
 
 ``` ts
 import * as remark from 'remark';
@@ -103,10 +107,10 @@ const tableRender = (doc: ComponentDoc) => markdownTable([
   stringLength: stringWith,
 });
 
-const customRender: ReactDocgenTypescriptRender = (docs) => docs
+const render: ReactDocgenTypescriptRender = (docs) => docs
   .map(doc => `\`${doc.displayName}\`: ${doc.description}\n\n${tableRender(doc)}`)
   .join('\n');
 
 const doc = vfile.readSync('README.md');
-console.log(remark().use(remarkReactDocgenTypescript, customRender).processSync(doc).contents);
+console.log(remark().use(remarkReactDocgenTypescript, { render }).processSync(doc).contents);
 ```

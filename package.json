@@ -1,8 +1,9 @@
 {
   "name": "remark-react-docgen-typescript",
   "version": "0.0.1",
-  "description": "Import React component documentation by react-docgen-typescript",
+  "description": "remark plugin to transform React component to Markdown by react-docgen-typescript",
   "main": "build/index.js",
+  "keywords": ["remark", "react-docgen-typescript", "react-docgen"],
   "engines": {
     "node": ">= 12.13"
   },
