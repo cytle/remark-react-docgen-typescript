@@ -1,31 +1,24 @@
-import { Delays, greeter } from '../src/main';
+import { reactDocgenTypescript } from '../src/main';
+import { readFileSync } from 'fs-extra';
+import * as vfile from 'to-vfile';
+import * as path from 'path';
+import * as remark from 'remark';
 
 describe('greeter function', () => {
-  // Read more about fake timers
-  // http://facebook.github.io/jest/docs/en/timer-mocks.html#content
-  jest.useFakeTimers();
-
-  const name = 'John';
-  let hello: string;
-
-  // Act before assertions
-  beforeAll(async () => {
-    const p: Promise<string> = greeter(name);
-    jest.runOnlyPendingTimers();
-    hello = await p;
-  });
-
-  // Assert if setTimeout was called properly
-  it('delays the greeting by 2 seconds', () => {
-    expect(setTimeout).toHaveBeenCalledTimes(1);
-    expect(setTimeout).toHaveBeenLastCalledWith(
-      expect.any(Function),
-      Delays.Long,
-    );
-  });
-
   // Assert greeter result
   it('greets a user with `Hello, {name}` message', () => {
-    expect(hello).toBe(`Hello, ${name}`);
+    const componentPath = path.resolve(__dirname, 'components', 'Column');
+
+    const { contents } = remark()
+      .use(reactDocgenTypescript)
+      .processSync(vfile.readSync(path.join(componentPath, 'README.md')));
+
+    expect(contents)
+      .toBe(
+        readFileSync(
+          path.join(componentPath, 'expect.md'),
+          'utf-8',
+        ),
+      );
   });
 });
