@@ -1,6 +1,6 @@
 {
   "name": "remark-react-docgen-typescript",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Import React component documentation by react-docgen-typescript",
   "main": "build/index.js",
   "engines": {
