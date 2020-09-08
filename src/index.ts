@@ -20,7 +20,7 @@ export type ReactDocgenTypescriptOptions = ParserOptions & {
   render?: ReactDocgenTypescriptRender;
   fileParser?: FileParser;
 };
-export const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
+const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
   (options) => {
     const { render, fileParser, ...parseOptions} = {
       render: defaultRender,
@@ -46,6 +46,8 @@ export const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
       });
     }
   };
+
+export default reactDocgenTypescript;
 
 export const defaultRender: ReactDocgenTypescriptRender = (docs) =>
   docs.map(vo => defaultComponentRender(vo)).join('\n');
