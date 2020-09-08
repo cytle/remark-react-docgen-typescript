@@ -2,4 +2,4 @@
 
 ## API
 
-<react-docgen-typescript src="./Column.tsx" />
+[Column](./Column.tsx "react-docgen-typescript:")

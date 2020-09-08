@@ -5,15 +5,20 @@ import * as vfile from 'to-vfile';
 import * as path from 'path';
 import * as remark from 'remark';
 import { ComponentDoc } from 'react-docgen-typescript';
-import * as markdownTable from 'markdown-table';
-import stringWith from 'string-width';
 import * as docgen from 'react-docgen-typescript';
+import * as stringWidth from 'string-width';
+import * as u from 'unist-builder';
+import { mdastTableBuilder } from '../src/utils';
+import { Table } from 'mdast';
 
 describe('remark use reactDocgenTypescript', () => {
   it('parse Column/README.md', () => {
     const componentPath = path.resolve(__dirname, 'components', 'Column');
 
     const { contents } = remark()
+      .use({
+        settings: { stringLength: stringWidth }
+      })
       .use(reactDocgenTypescript)
       .processSync(vfile.readSync(path.join(componentPath, 'README.md')));
 
@@ -28,22 +33,24 @@ describe('remark use reactDocgenTypescript', () => {
 
   it('Chinese custom render', () => {
     const componentPath = path.resolve(__dirname, 'components', 'Column');
-    const tableRender = (doc: ComponentDoc) => markdownTable([
+
+    const tableRender = (componentDoc: ComponentDoc): Table => mdastTableBuilder([
       ['属性', '描述', '类型', '默认值'],
-      ...Object.values(doc.props).map((vo) =>
+      ...Object.values(componentDoc.props).map((vo) =>
         [
-          `**${vo.name}**`,
+          u('strong', [u('text', vo.name)]),
           vo.description,
-          `\`${vo.type.name}\``,
+          u('inlineCode', vo.type.name),
           vo.defaultValue ? vo.defaultValue.value : '-',
         ]
       )
-    ], {
-      stringLength: stringWith,
-    });
-    const renderComponentApi = (doc: ComponentDoc) => `\`${doc.displayName}\`: ${doc.description}\n\n${tableRender(doc)}`;
-    const render: ReactDocgenTypescriptRender = (docs) => docs.map(doc => renderComponentApi(doc)).join('\n');
+    ]);
+
+    const render: ReactDocgenTypescriptRender = (docs) => u('root', docs.map(vo => tableRender(vo)));;
     const { contents } = remark()
+      .use({
+        settings: { stringLength: stringWidth }
+      })
       .use(reactDocgenTypescript, { render })
       .processSync(vfile.readSync(path.join(componentPath, 'README.md')));
 

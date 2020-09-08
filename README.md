@@ -62,7 +62,7 @@ Convert the following Markdown:
 
 ## API
 
-<react-docgen-typescript src="./Column.tsx" />
+[Column](./Column.tsx "react-docgen-typescript:")
 ```
 
 Into
@@ -99,27 +99,31 @@ import * as remark from 'remark';
 import * as reactDocgenTypescript from 'remark-react-docgen-typescript';
 import { ReactDocgenTypescriptRender } from 'remark-react-docgen-typescript/build/types';
 import * as vfile from 'to-vfile';
+import * as stringWidth from 'string-width';
 
-const tableRender = (doc: ComponentDoc) => markdownTable([
+const tableRender = (componentDoc: ComponentDoc): Table => mdastTableBuilder([
   ['属性', '描述', '类型', '默认值'],
-  ...Object.values(doc.props).map((vo) =>
+  ...Object.values(componentDoc.props).map((vo) =>
     [
-      `**${vo.name}**`,
+      u('strong', [u('text', vo.name)]),
       vo.description,
-      `\`${vo.type.name}\``,
+      u('inlineCode', vo.type.name),
       vo.defaultValue ? vo.defaultValue.value : '-',
     ]
   )
-], {
-  stringLength: stringWith,
-});
+]);
 
-const render: ReactDocgenTypescriptRender = (docs) => docs
-  .map(doc => `\`${doc.displayName}\`: ${doc.description}\n\n${tableRender(doc)}`)
-  .join('\n');
+const render: ReactDocgenTypescriptRender = (docs) => u('root', docs.map(vo => tableRender(vo)));;
 
 const doc = vfile.readSync('README.md');
-console.log(remark().use(reactDocgenTypescript, { render }).processSync(doc).contents);
+
+const { contents } = remark()
+  .use({
+    settings: { stringLength: stringWidth }
+  })
+  .use(reactDocgenTypescript, { render })
+  .processSync(doc);
+console.log(contents);
 ```
 
 ## License

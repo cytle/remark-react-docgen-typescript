@@ -2,13 +2,9 @@ import * as path from 'path';
 import * as visit from 'unist-util-visit';
 import { Plugin } from 'unified';
 import { withDefaultConfig } from 'react-docgen-typescript';
-import * as parse5 from 'parse5';
-import * as fromParse5 from 'hast-util-from-parse5';
-import * as isElement from 'hast-util-is-element';
-import * as hasProperty from 'hast-util-has-property';
-import { Parent } from 'unist';
 import { ReactDocgenTypescriptOptions } from './types';
 import { defaultRender } from './render';
+import { Link } from 'mdast';
 
 const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
   (options) => {
@@ -19,29 +15,14 @@ const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
     };
     const parser = fileParser || withDefaultConfig(parseOptions);
     return (tree, file) => {
-      visit(tree, 'html', (node) => {
-        /* istanbul ignore next */
-        if (typeof node.value === 'string') {
-          const hast = createElementNodeFromHtml(node.value);
-
-          if (isElement(hast, 'react-docgen-typescript') && hasProperty(hast, 'src')) {
-            const { src } = hast.properties as {src: string};
-            const fileAbsPath = path.resolve(file.dirname, src);
-
-            const docs = parser.parse(fileAbsPath);
-
-            node.value = render(docs);
-          }
+      visit(tree, 'link', (node: Link, index, parent) => {
+        if (node.title && node.title.startsWith('react-docgen-typescript:')) {
+          const docs = render(parser.parse(path.resolve(file.dirname, node.url)));
+          parent.children.splice(index, 1, docs);
         }
       });
     }
   };
-
-const createElementNodeFromHtml = (html: string) => {
-  const ast = parse5.parseFragment(html, {sourceCodeLocationInfo: true})
-  const hast = fromParse5(ast, {verbose: false}) as Parent;
-  return hast.children[0];
-}
 
 // fix commonjs
 export = reactDocgenTypescript;
