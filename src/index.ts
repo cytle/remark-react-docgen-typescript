@@ -49,6 +49,9 @@ const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
 
 export default reactDocgenTypescript;
 
+// fix commonjs
+exports = reactDocgenTypescript;
+
 export const defaultRender: ReactDocgenTypescriptRender = (docs) =>
   docs.map(vo => defaultComponentRender(vo)).join('\n');
 
