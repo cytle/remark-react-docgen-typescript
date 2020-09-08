@@ -20,7 +20,7 @@ import { reactDocgenTypescript } from 'remark-react-docgen-typescript';
 import * as vfile from 'to-vfile';
 
 const doc = vfile.readSync('README.md');
-console.log(remark().use(remarkReactDocgenTypescript).processSync(doc).contents);
+console.log(remark().use(reactDocgenTypescript).processSync(doc).contents);
 ```
 
 The Component [`Column.tsx`](./__tests__/components/Column/Column.tsx)
@@ -118,7 +118,7 @@ const render: ReactDocgenTypescriptRender = (docs) => docs
   .join('\n');
 
 const doc = vfile.readSync('README.md');
-console.log(remark().use(remarkReactDocgenTypescript, { render }).processSync(doc).contents);
+console.log(remark().use(reactDocgenTypescript, { render }).processSync(doc).contents);
 ```
 
 ## License
