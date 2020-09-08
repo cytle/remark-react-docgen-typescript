@@ -46,12 +46,7 @@
   "author": "Wuma <canyoutle@gmail.com>",
   "license": "Apache-2.0",
   "dependencies": {
-    "hast-util-from-parse5": "^6.0.0",
-    "hast-util-has-property": "^1.0.4",
-    "hast-util-is-element": "^1.1.0",
-    "markdown-table": "^2.0.0",
     "mdast": "^3.0.0",
-    "parse5": "^6.0.1",
     "react-docgen-typescript": "^1.20.4",
     "to-vfile": "^6.0.1",
     "tslib": "^2.0.1",
