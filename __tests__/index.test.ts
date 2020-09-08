@@ -1,4 +1,5 @@
-import reactDocgenTypescript, { ReactDocgenTypescriptRender } from '../src';
+import * as reactDocgenTypescript from '../src';
+import { ReactDocgenTypescriptRender } from '../src/types';
 import { readFileSync } from 'fs-extra';
 import * as vfile from 'to-vfile';
 import * as path from 'path';

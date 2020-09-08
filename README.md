@@ -16,7 +16,7 @@ yarn add -D remark-react-docgen-typescript
 
 ``` ts
 import * as remark from 'remark';
-import reactDocgenTypescript from 'remark-react-docgen-typescript';
+import * as reactDocgenTypescript from 'remark-react-docgen-typescript';
 import * as vfile from 'to-vfile';
 
 const doc = vfile.readSync('README.md');
@@ -96,7 +96,8 @@ Custom document rendering
 
 ``` ts
 import * as remark from 'remark';
-import reactDocgenTypescript, { ReactDocgenTypescriptRender } from 'remark-react-docgen-typescript';
+import * as reactDocgenTypescript from 'remark-react-docgen-typescript';
+import { ReactDocgenTypescriptRender } from 'remark-react-docgen-typescript/build/types';
 import * as vfile from 'to-vfile';
 
 const tableRender = (doc: ComponentDoc) => markdownTable([
