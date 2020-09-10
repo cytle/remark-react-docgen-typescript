@@ -81,4 +81,15 @@ describe('remark use reactDocgenTypescript', () => {
         ),
       );
   });
+
+  it('throwError', () => {
+    expect(() => {
+      const componentPath = path.resolve(__dirname, 'components', 'Column');
+      remark()
+        .use(reactDocgenTypescript)
+        .processSync(vfile.readSync(path.join(componentPath, 'throwError.md')));
+    })
+      .toThrowError('Failed processing react component file at ./notExist.tsx. Details: Error: file does not exist');
+  });
+
 });

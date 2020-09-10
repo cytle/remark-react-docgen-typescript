@@ -32,7 +32,6 @@ const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
             parent.children.splice(index, 1, docNode);
           }
         } catch (error) {
-          /* istanbul ignore next */
           vfile.fail(`Failed processing react component file at ${node.url}. Details: ${error}`, node.position, PLUGIN_NAME);
         }
       });
