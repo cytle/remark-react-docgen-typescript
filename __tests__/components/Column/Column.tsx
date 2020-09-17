@@ -13,7 +13,7 @@ export interface IColumnProps {
   /** prop2 description */
   prop2: number;
   /**
-   * prop3 description
+   * prop3 description a | b
    */
   prop3: () => void;
   /** prop4 description 中文 */

@@ -20,7 +20,7 @@ export const defaultComponentDocTableRender = (componentDoc: ComponentDoc): Tabl
     [
       u('strong', [u('text', vo.name)]),
       vo.description,
-      u('inlineCode', vo.type.name),
+      vo.type.name,
       `${vo.defaultValue && vo.defaultValue.value}`,
       vo.required ? ':white_check_mark:' : ':negative_squared_cross_mark:',
     ]
