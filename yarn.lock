@@ -3596,15 +3596,17 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
-react-docgen-typescript-markdown-render@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/react-docgen-typescript-markdown-render/-/react-docgen-typescript-markdown-render-0.0.1.tgz#0d819c769b73bca560027f5b040ddc5f3ccec14b"
-  integrity sha512-Sbdnx5fO0vsZb/1XEfCGYrb6yzNxfW821HcIJQsf4gev1YzaCnGesKN04sO4Puc0znB3uGjLayu1nw5Ef19yIA==
+react-docgen-typescript-markdown-render@~0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-docgen-typescript-markdown-render/-/react-docgen-typescript-markdown-render-0.0.2.tgz#ffc50d44cdde13d78408658ce178e46f381716bd"
+  integrity sha512-uZrM5oV2ILZtcWUMYSmqrW36Kpv4RyJyMWvR/6pMeiAsf75G0p+7wks2pdrY1rpICTcOimD8bLDQ5IE6lo1mtQ==
   dependencies:
     mdast "^3.0.0"
     react-docgen-typescript "^1.20.4"
     remark-stringify "^8.1.1"
+    string-width "^4.2.0"
     tslib "^2.0.1"
+    unified "^9.2.0"
     unist-builder "^2.0.3"
 
 react-docgen-typescript@^1.20.4:
@@ -4476,7 +4478,7 @@ unherit@^1.0.4:
     inherits "^2.0.0"
     xtend "^4.0.0"
 
-unified@^9.0.0:
+unified@^9.0.0, unified@^9.2.0:
   version "9.2.0"
   resolved "https://registry.yarnpkg.com/unified/-/unified-9.2.0.tgz#67a62c627c40589edebbf60f53edfd4d822027f8"
   integrity sha512-vx2Z0vY+a3YoTj8+pttM3tiJHCwY5UFbYdiWrwBEbHmK8pvsPj2rtAX2BFfgXen8T39CJWblWRDT4L5WGXtDdg==
