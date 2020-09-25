@@ -3596,6 +3596,17 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
+react-docgen-typescript-markdown-render@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.npm.alibaba-inc.com/react-docgen-typescript-markdown-render/download/react-docgen-typescript-markdown-render-0.0.1.tgz#0d819c769b73bca560027f5b040ddc5f3ccec14b"
+  integrity sha1-DYGcdptzvKVgAn9bBA3cXzzOwUs=
+  dependencies:
+    mdast "^3.0.0"
+    react-docgen-typescript "^1.20.4"
+    remark-stringify "^8.1.1"
+    tslib "^2.0.1"
+    unist-builder "^2.0.3"
+
 react-docgen-typescript@^1.20.4:
   version "1.20.4"
   resolved "https://registry.yarnpkg.com/react-docgen-typescript/-/react-docgen-typescript-1.20.4.tgz#9a5655986077ccfc58c1a447f92c3d19f7a875bf"
@@ -3677,7 +3688,7 @@ remark-parse@^8.0.0:
     vfile-location "^3.0.0"
     xtend "^4.0.1"
 
-remark-stringify@^8.0.0:
+remark-stringify@^8.0.0, remark-stringify@^8.1.1:
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/remark-stringify/-/remark-stringify-8.1.1.tgz#e2a9dc7a7bf44e46a155ec78996db896780d8ce5"
   integrity sha512-q4EyPZT3PcA3Eq7vPpT6bIdokXzFGp9i85igjmhRyXWmPs0Y6/d2FYwUNotKAWyLch7g0ASZJn/KHHcHZQ163A==

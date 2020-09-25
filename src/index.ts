@@ -3,15 +3,16 @@ import * as visit from 'unist-util-visit';
 import { Plugin } from 'unified';
 import { withDefaultConfig } from 'react-docgen-typescript';
 import { ReactDocgenTypescriptOptions } from './types';
-import { defaultRender } from './render';
+import { mdastBuilder } from 'react-docgen-typescript-markdown-render';
 import { Link } from 'mdast';
 import * as pathExists from 'path-exists';
+import * as u from 'unist-builder';
 
 const PLUGIN_NAME = 'react-docgen-typescript';
 const reactDocgenTypescript: Plugin<[ReactDocgenTypescriptOptions?]> =
   (options) => {
     const { render, fileParser, ...parseOptions} = {
-      render: defaultRender,
+      render: (docs) => u('root', mdastBuilder(docs)),
       savePropValueAsString: true,
       ...options,
     };

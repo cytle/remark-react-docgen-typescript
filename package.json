@@ -49,6 +49,7 @@
     "mdast": "^3.0.0",
     "path-exists": "^4.0.0",
     "react-docgen-typescript": "^1.20.4",
+    "react-docgen-typescript-markdown-render": "^0.0.1",
     "to-vfile": "^6.0.1",
     "tslib": "^2.0.1",
     "unist-builder": "^2.0.3",

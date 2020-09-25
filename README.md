@@ -100,17 +100,13 @@ import * as reactDocgenTypescript from 'remark-react-docgen-typescript';
 import { ReactDocgenTypescriptRender } from 'remark-react-docgen-typescript/build/types';
 import * as vfile from 'to-vfile';
 import * as stringWidth from 'string-width';
+import { componentDocTableMdastBuilder } from 'react-docgen-typescript-markdown-render';
 
-const tableRender = (componentDoc: ComponentDoc): Table => mdastTableBuilder([
-  ['属性', '描述', '类型', '默认值'],
-  ...Object.values(componentDoc.props).map((vo) =>
-    [
-      u('strong', [u('text', vo.name)]),
-      vo.description,
-      u('inlineCode', vo.type.name),
-      vo.defaultValue ? vo.defaultValue.value : '-',
-    ]
-  )
+const tableRender = (componentDoc: ComponentDoc): Table => componentDocTableMdastBuilder(componentDoc, [
+  { title: '属性', render: (vo) => u('strong', [u('text', vo.name)]) },
+  { title: '描述', render: (vo) => vo.description,},
+  { title: '类型', render: (vo) => u('inlineCode', vo.type.name) },
+  { title: '默认值', render: (vo) => vo.defaultValue ? vo.defaultValue.value : '-' },
 ]);
 
 const render: ReactDocgenTypescriptRender = (docs) => u('root', docs.map(vo => tableRender(vo)));;
