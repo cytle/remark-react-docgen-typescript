@@ -76,14 +76,14 @@ Into
 
 Form column.
 
-#### props
+#### Props
 
-| prop      | description            | type                                | default | required                      |
-| --------- | ---------------------- | ----------------------------------- | ------- | ----------------------------- |
-| **prop1** | prop1 description      | `string`                            | "red"   | :negative_squared_cross_mark: |
-| **prop2** | prop2 description      | `number`                            | null    | :white_check_mark:            |
-| **prop3** | prop3 description      | `() => void`                        | null    | :white_check_mark:            |
-| **prop4** | prop4 description 中文 | `"option1" | "option2" | "option3"` | null    | :white_check_mark:            |
+| Name               | Type                                | Default value | Description              |
+| ------------------ | ----------------------------------- | ------------- | ------------------------ |
+| prop1              | string                              | "red"         | prop1 description        |
+| prop2 _(required)_ | number                              |               | prop2 description        |
+| prop3 _(required)_ | () => void                          |               | prop3 description a \| b |
+| prop4 _(required)_ | "option1" \| "option2" \| "option3" |               | prop4 description 中文   |
 ```
 
 ## Options
